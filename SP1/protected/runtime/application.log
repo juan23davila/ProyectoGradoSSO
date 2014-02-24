@@ -1,0 +1,11 @@
+2014/02/24 15:43:57 [error] [php] Undefined index: uid (/Applications/XAMPP/xamppfiles/htdocs/ProyectoGradoSSO/SP1/protected/controllers/SiteController.php:107)
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/yii/framework/web/CController.php(286): SiteController->runAction()
+#1 /Applications/XAMPP/xamppfiles/htdocs/yii/framework/web/CController.php(265): SiteController->runActionWithFilters()
+#2 /Applications/XAMPP/xamppfiles/htdocs/yii/framework/web/CWebApplication.php(282): SiteController->run()
+#3 /Applications/XAMPP/xamppfiles/htdocs/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Applications/XAMPP/xamppfiles/htdocs/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /Applications/XAMPP/xamppfiles/htdocs/ProyectoGradoSSO/SP1/index.php(14): CWebApplication->run()
+REQUEST_URI=/index.php/site/registro
+in /Applications/XAMPP/xamppfiles/htdocs/ProyectoGradoSSO/SP1/protected/controllers/SiteController.php (107)
+in /Applications/XAMPP/xamppfiles/htdocs/ProyectoGradoSSO/SP1/index.php (14)
