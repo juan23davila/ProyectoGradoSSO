@@ -1,0 +1,8 @@
+2014/02/24 16:40:46 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "enviarCorreo".' in /Applications/XAMPP/xamppfiles/htdocs/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('enviarCorreo')
+#1 /Applications/XAMPP/xamppfiles/htdocs/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/XAMPP/xamppfiles/htdocs/ProyectoGradoSSO/IDP/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php/enviarCorreo
+---
