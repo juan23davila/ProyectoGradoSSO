@@ -38,6 +38,7 @@ class Usuario extends CActiveRecord
 			array('username, password, correo', 'required'),
 			array('username, password, nombre, apellido, correo, direccion, cedula, telefono', 'length', 'max'=>45),
 			array('activo', 'length', 'max'=>1),
+                        array('correo', 'email'),
 			array('fecha_creacion, fecha_modificacion', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.

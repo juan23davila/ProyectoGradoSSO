@@ -26,7 +26,7 @@ class UsuarioController extends Controller {
     public function accessRules() {
         return array(
             array('allow', // allow all users to perform 'index' and 'view' actions
-                'actions' => array('index', 'view', 'enviarCorreo'),
+                'actions' => array('index', 'view', 'enviarCorreo', 'recuperarContrasena'),
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -51,6 +51,22 @@ class UsuarioController extends Controller {
         $this->render('view', array(
             'model' => $this->loadModel($id),
         ));
+    }
+
+    public function actionRecuperarContrasena() {
+
+        $model = new Usuario;
+
+        if (isset($_POST['Usuario'])) {
+            $correo = $_POST['Usuario']['correo'];
+            $this->enviarRecuperacionCorreo($correo);
+            Yii::app()->user->setFlash('Correo', 'Se  ha enviado un correo electronico con el link de recuperacion de contraseña');
+            $this->refresh();
+        }
+            $this->render('recuperar', array(
+                'model' => $model,
+            ));
+        
     }
 
     /**
@@ -87,6 +103,7 @@ class UsuarioController extends Controller {
 
         if (isset($_POST['Usuario'])) {
             $model->attributes = $_POST['Usuario'];
+            //TODO modificar la fecha_modificacion en la base de datos.
             if ($model->save())
                 $this->redirect(array('view', 'id' => $model->id));
         }
@@ -147,19 +164,18 @@ class UsuarioController extends Controller {
         return $model;
     }
 
-    public function actionEnviarCorreo() {
+    private function enviarRecuperacionCorreo( $correo ) {
 
-            $name = '=?UTF-8?B?' . base64_encode("JUAN") . '?=';
-            $subject = '=?UTF-8?B?' . base64_encode("RECUPERACION DE CORREO") . '?=';
-            $headers = "From: $name <{contacto@miproteina.com.co}>\r\n" .
-                    "Reply-To: {contacto@miproteina.com.co}\r\n" .
-                    "MIME-Version: 1.0\r\n" .
-                    "Content-Type: text/plain; charset=UTF-8";
+        $name = '=?UTF-8?B?' . base64_encode("JUAN") . '?=';
+        $subject = '=?UTF-8?B?' . base64_encode("RECUPERACION DE CORREO") . '?=';
+        $headers = "From: $name <{contacto@miproteina.com.co}>\r\n" .
+                "Reply-To: {contacto@miproteina.com.co}\r\n" .
+                "MIME-Version: 1.0\r\n" .
+                "Content-Type: text/plain; charset=UTF-8";
 
-            mail('anfho93@gmail.com', $subject, "CORREO", $headers);
-           // Yii::app()->user->setFlash('contact', 'Thank you for contacting us. We will respond to you as soon as possible.');
-            $this->redirect("Index");
-        
+        mail('anfho93@gmail.com', $subject, "CORREO", $headers);
+        // Yii::app()->user->setFlash('contact', 'Thank you for contacting us. We will respond to you as soon as possible.');
+        //$this->redirect("index");
     }
 
     /**

@@ -146,7 +146,8 @@ if(!empty($this->data['links'])) {
 </div>
 		</div><!-- row-fluid -->
 <div class="row">
-<div class="col-md-12">
+<div class="col-md-12" >
+    <a href="http://idp.anfho.com/index.php/usuario/recuperarContrasena"><span>Olvidaste tu contraseña? Has click aquí.</span></a>
 <?php
 
 echo('<h3 class="logintext">' . $this->t('{login:help_header}') . '</h3>');
