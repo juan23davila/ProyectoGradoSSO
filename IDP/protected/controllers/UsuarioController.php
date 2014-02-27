@@ -103,6 +103,7 @@ class UsuarioController extends Controller {
 
         if (isset($_POST['Usuario'])) {
             $model->attributes = $_POST['Usuario'];
+            $model->fecha_modificacion = date(Y/m/d);
             //TODO modificar la fecha_modificacion en la base de datos.
             if ($model->save())
                 $this->redirect(array('view', 'id' => $model->id));
