@@ -1,0 +1,1 @@
+a:7:{s:10:"pluginname";s:24:"Informe de interacciones";s:9:"questionx";s:13:"Pregunta {$a}";s:9:"responsex";s:14:"Respuesta {$a}";s:12:"rightanswerx";s:23:"Respuesta correcta {$a}";s:21:"summaryofquestiontext";s:22:"Resumen de la pregunta";s:17:"summaryofresponse";s:21:"Resumen de respuestas";s:20:"summaryofrightanswer";s:31:"Resumen de respuestas correctas";}

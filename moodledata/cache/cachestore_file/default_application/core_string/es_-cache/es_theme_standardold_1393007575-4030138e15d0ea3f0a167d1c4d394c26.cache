@@ -1,0 +1,9 @@
+a:4:{s:10:"pluginname";s:20:"Estándar (herencia)";s:16:"region-side-post";s:7:"Derecha";s:15:"region-side-pre";s:9:"Izquierda";s:12:"choosereadme";s:1334:"Este tema ha sido diseñado específicamente para funcionar en Internet Explorer 6 y otros navegadores antiguos.
+
+Las notas de la versión Moodle 2.0 afirman que Internet Explorer 6 ya no se admite, sin embargo no hemos querido salir de nuestro camino de para asegurarnos de que realmente no funcione y, como tal, debe en su mayor parte funcionar bien exceptuando numerosos problemas visuales menores.
+
+Este tema está aquí para aquellos que todavía están atrapados con IE6 puedan tener un tema utilizable, aunque las áreas específicas de Moodle pueden todavía causar problemas o no funcionar correctamente.
+Se diferencia del tema estándar tan sólo por el diseño, en lugar de utilizar el diseño div flotante que establece el primer contenido de este tema, utiliza una tabla para el diseño muy similar a los temas en Moodle 1.9.
+
+Debido a que Internet Explorer 6 no es compatible con Moodle HQ no va a pasar gran cantidad de tiempo en conseguir que este sea 100% funcional. Por favor, si encuentra un error con IE6 y este tema -  y encuentra una solución al error. En ese caso, cree un informe de error en tracker.moodle.org y proporcione un ejemplo detallado de dónde encontrar y cómo reproducir el error, así como la solución que encontró.
+De esta manera podemos seguir mejorando el tema y que sea soportado por IE6.";}
