@@ -1,0 +1,28 @@
+2014/02/17 16:53:36 [error] [exception.Exception] exception 'Exception' with message 'Invalid authentication source: sp1' in C:\xampp\htdocs\ProyectoGradoSSO\SP2\lib\simplesaml\lib\SimpleSAML\Auth\Default.php:54
+Stack trace:
+#0 C:\xampp\htdocs\ProyectoGradoSSO\SP2\lib\simplesaml\lib\SimpleSAML\Auth\Simple.php(137): SimpleSAML_Auth_Default::initLogin('sp1', 'http://sp1.anfh...', NULL, Array)
+#1 C:\xampp\htdocs\ProyectoGradoSSO\SP2\lib\simplesaml\lib\SimpleSAML\Auth\Simple.php(80): SimpleSAML_Auth_Simple->login(Array)
+#2 C:\xampp\htdocs\ProyectoGradoSSO\SP2\protected\controllers\SiteController.php(91): SimpleSAML_Auth_Simple->requireAuth(Array)
+#3 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionLogin()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('login')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/login')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\ProyectoGradoSSO\SP2\index.php(14): CApplication->run()
+#11 {main}
+REQUEST_URI=/index.php?r=site/login
+HTTP_REFERER=http://sp2.anfho.com/
+---
+2014/02/27 15:38:09 [error] [php] Undefined index: uid (C:\xampp\htdocs\ProyectoGradoSSO\SP2\protected\controllers\SiteController.php:105)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(286): SiteController->runAction()
+#1 C:\xampp\htdocs\yii\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#2 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): SiteController->run()
+#3 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\xampp\htdocs\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#5 C:\xampp\htdocs\ProyectoGradoSSO\SP2\index.php(14): CWebApplication->run()
+REQUEST_URI=/index.php/site/registro
+in C:\xampp\htdocs\ProyectoGradoSSO\SP2\protected\controllers\SiteController.php (105)
+in C:\xampp\htdocs\ProyectoGradoSSO\SP2\index.php (14)
