@@ -38,6 +38,10 @@ $this->breadcrumbs=array(
 			Hint: You may login with <kbd>demo</kbd>/<kbd>demo</kbd> or <kbd>admin</kbd>/<kbd>admin</kbd>.
 		</p>
 	</div>
+        
+        <div class="row">
+            <span>Para recordar la contraseña has  <a href="http://idp.anfho.com/index.php/usuario/recuperarContrasena">click aquí</a> </span>
+        </div>
 
 	<div class="row rememberMe">
 		<?php echo $form->checkBox($model,'rememberMe'); ?>

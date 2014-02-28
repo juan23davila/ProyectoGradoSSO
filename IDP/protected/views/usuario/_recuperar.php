@@ -22,10 +22,11 @@
         'method' => 'post',
     ));
     ?>
-
+    
     <div class="row">
-<?php echo $form->label($model, "correo"); ?>
-        <input type="email" name="Usuario[correo]" id="Usuario[correo]" required="true"/>
+        <p>Ingresar un correo electronico con el que registro su cuenta, de no recordarlo comunicarse con el centro de atención.</p>
+        <?php echo $form->label($model, "correo"); ?>
+        <input type="email" name="Usuario[correo]" id="Usuario[correo]" required/>
     </div>
 
 

@@ -26,16 +26,16 @@ class UsuarioController extends Controller {
     public function accessRules() {
         return array(
             array('allow', // allow all users to perform 'index' and 'view' actions
-                'actions' => array('index', 'view', 'enviarCorreo', 'recuperarContrasena'),
+                'actions' => array('enviarCorreo', 'recuperarContrasena'),
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('create', 'update'),
+                'actions' => array('create', 'update', 'cambiarContrasena'),
                 'users' => array('@'),
             ),
             array('allow', // allow admin user to perform 'admin' and 'delete' actions
-                'actions' => array('admin', 'delete'),
-                'users' => array('admin'),
+                'actions' => array('admin', 'delete', 'index', 'view'),
+                'users' => array('anfho'),
             ),
             array('deny', // deny all users
                 'users' => array('*'),
@@ -59,14 +59,13 @@ class UsuarioController extends Controller {
 
         if (isset($_POST['Usuario'])) {
             $correo = $_POST['Usuario']['correo'];
-            $this->enviarRecuperacionCorreo($correo);
-            Yii::app()->user->setFlash('Correo', 'Se  ha enviado un correo electronico con el link de recuperacion de contraseña');
+            $respuesta = $this->enviarRecuperacionCorreo($correo);
+            Yii::app()->user->setFlash('Correo', $respuesta);
             $this->refresh();
         }
-            $this->render('recuperar', array(
-                'model' => $model,
-            ));
-        
+        $this->render('recuperar', array(
+            'model' => $model,
+        ));
     }
 
     /**
@@ -103,7 +102,7 @@ class UsuarioController extends Controller {
 
         if (isset($_POST['Usuario'])) {
             $model->attributes = $_POST['Usuario'];
-            $model->fecha_modificacion = date(Y/m/d);
+            $model->fecha_modificacion = date(Y / m / d);
             //TODO modificar la fecha_modificacion en la base de datos.
             if ($model->save())
                 $this->redirect(array('view', 'id' => $model->id));
@@ -151,6 +150,44 @@ class UsuarioController extends Controller {
         ));
     }
 
+    public function actionCambiarContrasena() {
+        $correo = "";
+        if (isset($_POST['Usuario'])) {
+            $correo = $_POST['Usuario']['correo'];
+        } else {
+            $correo = $_REQUEST['correo'];
+        }
+
+        $modelo = Usuario::model()->find("correo=:correo", array(":correo" => $correo));
+
+
+        if ($modelo != null) {
+            if (isset($_POST['Usuario'])) {
+                if ($_POST['password'] == $_POST['Usuario']['password']) {
+
+                    $modelo->password = $_POST['Usuario']['password'];
+                    if ($modelo->save()) {
+                        Yii::app()->user->setFlash('contrasena', "Tu contraseña fue modificada");
+                        
+                    } else {
+                        Yii::app()->user->setFlash('contrasena', "Tu contraseña NO fue modificada");
+                    }
+                }else{
+                 Yii::app()->user->setFlash('contrasena', "Los campos deben coincidir");   
+                }
+            } else {
+                Yii::app()->user->setFlash('contrasena', "Tu contraseña NO fue modificada");
+            }
+           
+            $this->render('cambiar', array(
+                'model' => $modelo,
+            ));
+        } else {
+            $this->actionIndex();
+        }
+        //$_GET['correo'];
+    }
+
     /**
      * Returns the data model based on the primary key given in the GET variable.
      * If the data model is not found, an HTTP exception will be raised.
@@ -165,18 +202,47 @@ class UsuarioController extends Controller {
         return $model;
     }
 
-    private function enviarRecuperacionCorreo( $correo ) {
+    private function enviarRecuperacionCorreo($correo) {
+        $message = "<h1>COSA</h1>";
+        $mail = new PHPMailer;
+        $mail->isSMTP();                                      // Set mailer to use SMTP
+        $mail->Host = 'smtp.gmail.com';                       // Specify main and backup server
+        $mail->SMTPAuth = true;                               // Enable SMTP authentication
+        $mail->Username = 'anfho93@gmail.com';                   // SMTP username
+        $mail->Password = 'Andres1993';               // SMTP password
+        $mail->SMTPSecure = 'tls';                            // Enable encryption, 'ssl' also accepted
+        $mail->Port = 587;                                    //Set the SMTP port number - 587 for authenticated TLS
+        $mail->setFrom('anfho93@gmail.com', 'Anfho');     //Set who the message is to be sent from
+        $mail->addReplyTo('anfho93@gmail.com', 'First Last');  //Set an alternative reply-to address
+        $mail->addAddress($correo);  // Add a recipient
+        $mail->WordWrap = 50;                                // Set word wrap to 50 characters
+        $mail->isHTML(true);                                  // Set email format to HTML
+        $mail->Subject = 'Recuperacion de contraseñas SSO Uniquindio';
 
-        $name = '=?UTF-8?B?' . base64_encode("JUAN") . '?=';
-        $subject = '=?UTF-8?B?' . base64_encode("RECUPERACION DE CORREO") . '?=';
-        $headers = "From: $name <{contacto@miproteina.com.co}>\r\n" .
-                "Reply-To: {contacto@miproteina.com.co}\r\n" .
-                "MIME-Version: 1.0\r\n" .
-                "Content-Type: text/plain; charset=UTF-8";
+        if ($this->isUsuario($correo)) {
+            $password = $this->darContrasenaUsuario($correo);
+            $mail->msgHTML('tu password es ' . $password . "Te recomendamos cambiarla en el siguiente" . '<a href="http://idp.anfho.com/index.php/usuario/cambiarContrasena?correo=' . $correo . '">LINK</a>"');
+            if (!$mail->send()) {
+                return 'El mensaje no fue enviado' . 'Mailer Error: ' . $mail->ErrorInfo;
+            }
+            return 'Se envio un mensaje al correo electronico con la informacion necesaria para recuperar tu contraseña.';
+        } else {
+            return "No eres un usuario de este proveedor de identidad.";
+        }
+    }
 
-        mail('anfho93@gmail.com', $subject, "CORREO", $headers);
-        // Yii::app()->user->setFlash('contact', 'Thank you for contacting us. We will respond to you as soon as possible.');
-        //$this->redirect("index");
+    private function isUsuario($correo) {
+        $model = Usuario::model()->find('correo=:correo', array(':correo' => $correo));
+        if ($model == null) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    private function darContrasenaUsuario($correo) {
+        $user = Usuario::model()->find("correo=:correo", array(":correo" => $correo));
+        return $user->password;
     }
 
     /**
