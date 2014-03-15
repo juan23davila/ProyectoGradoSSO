@@ -74,8 +74,7 @@ class UsuarioController extends Controller {
      */
     public function actionCreate() {
         $model = new Usuario;
-
-        // Uncomment the following line if AJAX validation is needed
+ 
         // $this->performAjaxValidation($model);
 
         if (isset($_POST['Usuario'])) {
@@ -150,7 +149,8 @@ class UsuarioController extends Controller {
         ));
     }
 
-    public function actionCambiarContrasena() {
+    public function actionCambiarContrasena(
+            ) {
         $correo = "";
         if (isset($_POST['Usuario'])) {
             $correo = $_POST['Usuario']['correo'];
@@ -159,7 +159,6 @@ class UsuarioController extends Controller {
         }
 
         $modelo = Usuario::model()->find("correo=:correo", array(":correo" => $correo));
-
 
         if ($modelo != null) {
             if (isset($_POST['Usuario'])) {
@@ -184,8 +183,7 @@ class UsuarioController extends Controller {
             ));
         } else {
             $this->actionIndex();
-        }
-        //$_GET['correo'];
+        }    
     }
 
     /**
