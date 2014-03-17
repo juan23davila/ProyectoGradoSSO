@@ -56,5 +56,15 @@ class UsuarioTest extends CDbTestCase {
                 ), false);
         return $usuario;
     }
+    
+    public function tetModificarContraseña(){
+        //TODO
+    }
+    
+    public function testRecuperarContraseña(){
+        //TODO
+    }
+    
+    
 
 } 
