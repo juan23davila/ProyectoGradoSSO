@@ -87,7 +87,7 @@ class SiteController extends Controller {
           } */
         $auth = new SimpleSAML_Auth_Simple('sp1');
         if (!$auth->isAuthenticated()) {
-            $auth->requireAuth(array('ReturnTo' => 'http://sp1.anfho.com/index.php/site/registro',
+            $auth->requireAuth(array('ReturnTo' => 'http://sp1.anfho.com/index.php/',
                 'KeepPost' => FALSE,));
         } else {
             /*$atributos = $auth->getAttributes();

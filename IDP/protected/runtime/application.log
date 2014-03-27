@@ -652,3 +652,104 @@ Stack trace:
 REQUEST_URI=/index.php/usuario/admin
 HTTP_REFERER=http://idp.anfho.com/index.php/usuario
 ---
+2014/03/18 14:55:18 [error] [exception.CException] exception 'CException' with message 'Property "CActiveForm.name" is not defined.' in C:\xampp\htdocs\yii\framework\base\CComponent.php:173
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWidgetFactory.php(161): CComponent->__set('name', 'recuperarForm')
+#1 C:\xampp\htdocs\yii\framework\web\CBaseController.php(146): CWidgetFactory->createWidget(Object(UsuarioController), 'CActiveForm', Array)
+#2 C:\xampp\htdocs\yii\framework\web\CBaseController.php(189): CBaseController->createWidget('CActiveForm', Array)
+#3 C:\xampp\htdocs\ProyectoGradoSSO\IDP\protected\views\usuario\_recuperar.php(24): CBaseController->beginWidget('CActiveForm', Array)
+#4 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require('C:\xampp\htdocs...')
+#5 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\xampp\htdocs...', Array, true)
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\xampp\htdocs...', Array, true)
+#7 C:\xampp\htdocs\ProyectoGradoSSO\IDP\protected\views\usuario\recuperar.php(5): CController->renderPartial('_recuperar', Array)
+#8 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require('C:\xampp\htdocs...')
+#9 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\xampp\htdocs...', Array, true)
+#10 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\xampp\htdocs...', Array, true)
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(782): CController->renderPartial('recuperar', Array, true)
+#12 C:\xampp\htdocs\ProyectoGradoSSO\IDP\protected\controllers\UsuarioController.php(68): CController->render('recuperar', Array)
+#13 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): UsuarioController->actionRecuperarContrasena()
+#14 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#15 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#16 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#17 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#18 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#19 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#20 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#21 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#22 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('recuperarContra...')
+#23 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('usuario/recuper...')
+#24 C:\xampp\htdocs\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#25 C:\xampp\htdocs\ProyectoGradoSSO\IDP\index.php(14): CApplication->run()
+#26 {main}
+REQUEST_URI=/index.php/usuario/recuperarContrasena
+HTTP_REFERER=http://idp.anfho.com/simplesaml/module.php/core/loginuserpass.php?AuthState=_17392a5ab24e8ffd531c5fa921f3119cb5c63e52f6%3Ahttp%3A%2F%2Fidp.anfho.com%2Fsimplesaml%2Fsaml2%2Fidp%2FSSOService.php%3Fspentityid%3Dsp1%26cookieTime%3D1395150915%26RelayState%3Dhttp%253A%252F%252Fsp1.anfho.com%252Findex.php%252Fsite%252Fregistro
+---
+2014/03/18 15:56:59 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "index.php/site/login".' in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('index.php/site/...')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\ProyectoGradoSSO\IDP\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php/index.php/site/login
+---
+2014/03/18 18:35:27 [error] [php] Use of undefined constant Y - assumed 'Y' (C:\xampp\htdocs\ProyectoGradoSSO\IDP\protected\controllers\UsuarioController.php:104)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#1 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): UsuarioController->runAction()
+#3 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#5 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): UsuarioController->filterAccessControl()
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#7 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(265): UsuarioController->runActionWithFilters()
+#9 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): UsuarioController->run()
+#10 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#11 C:\xampp\htdocs\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#12 C:\xampp\htdocs\ProyectoGradoSSO\IDP\index.php(14): CWebApplication->run()
+REQUEST_URI=/index.php/usuario/update/2
+in C:\xampp\htdocs\ProyectoGradoSSO\IDP\protected\controllers\UsuarioController.php (104)
+in C:\xampp\htdocs\ProyectoGradoSSO\IDP\index.php (14)
+2014/03/18 18:36:05 [error] [php] Use of undefined constant d - assumed 'd' (C:\xampp\htdocs\ProyectoGradoSSO\IDP\protected\controllers\UsuarioController.php:104)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#1 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): UsuarioController->runAction()
+#3 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#5 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): UsuarioController->filterAccessControl()
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#7 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(265): UsuarioController->runActionWithFilters()
+#9 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): UsuarioController->run()
+#10 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#11 C:\xampp\htdocs\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#12 C:\xampp\htdocs\ProyectoGradoSSO\IDP\index.php(14): CWebApplication->run()
+REQUEST_URI=/index.php/usuario/update/2
+in C:\xampp\htdocs\ProyectoGradoSSO\IDP\protected\controllers\UsuarioController.php (104)
+in C:\xampp\htdocs\ProyectoGradoSSO\IDP\index.php (14)
+2014/03/27 00:54:05 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'Godofredo123' for key 'username_UNIQUE'. The SQL statement executed was: INSERT INTO `Usuario` (`activo`, `username`, `password`, `nombre`, `apellido`, `correo`, `direccion`, `cedula`, `telefono`, `fecha_creacion`, `fecha_modificacion`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, :yp9, :yp10).
+in C:\xampp\htdocs\ProyectoGradoSSO\IDP\protected\controllers\UsuarioController.php (82)
+in C:\xampp\htdocs\ProyectoGradoSSO\IDP\index.php (14)
+2014/03/27 00:54:05 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'Godofredo123' for key 'username_UNIQUE'. The SQL statement executed was: INSERT INTO `Usuario` (`activo`, `username`, `password`, `nombre`, `apellido`, `correo`, `direccion`, `cedula`, `telefono`, `fecha_creacion`, `fecha_modificacion`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, :yp9, :yp10)' in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:358
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(1077): CDbCommand->execute()
+#1 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(806): CActiveRecord->insert(NULL)
+#2 C:\xampp\htdocs\ProyectoGradoSSO\IDP\protected\controllers\UsuarioController.php(82): CActiveRecord->save()
+#3 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): UsuarioController->actionCreate()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('create')
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('usuario/create')
+#14 C:\xampp\htdocs\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\ProyectoGradoSSO\IDP\index.php(14): CApplication->run()
+#16 {main}
+REQUEST_URI=/index.php/usuario/create
+HTTP_REFERER=http://idp.anfho.com/index.php/usuario/create
+---
