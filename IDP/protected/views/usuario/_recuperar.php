@@ -20,6 +20,7 @@
     $form = $this->beginWidget('CActiveForm', array(
         'action' => Yii::app()->createUrl($this->route),
         'method' => 'post',
+        'id' => 'recuperarForm'
     ));
     ?>
     
@@ -31,7 +32,7 @@
 
 
     <div class="row buttons">
-    <?php echo CHtml::submitButton('Recuperar Contraseña'); ?>
+    <?php echo CHtml::submitButton('Recuperar'); ?>
     </div>
 
 <?php $this->endWidget(); ?>

@@ -6,34 +6,39 @@ class UsuarioTest extends CDbTestCase {
         'usuarios' => 'Usuario',
             //'comments'=>'Comment',
     );
-
+    
+    /**
+     * 
+     */
     public function testCreate() {
         $usuario = $this->crearUsuario();
-
         $this->assertTrue($usuario->save(false));
-        // verify the comment is in pending status
+       
         $usuario = Usuario::model()->findByPk($usuario->id);
         $this->assertTrue($usuario instanceof Usuario);
         $this->assertEquals(1, $usuario->activo);
         $usuario->delete();
     }
     
+    /**
+     * 
+     */
     public function testUpdate(){
-        $usuario = $this->crearUsuario();
-        
+        $usuario = $this->crearUsuario();        
         $this->assertTrue($usuario->save(false));
         $usuario1 = Usuario::model()->findByPk($usuario->id);
-        $usuario1->apellido='mejia';
-        
+        $usuario1->apellido='mejia';        
         $this->assertTrue($usuario1->apellido!=$usuario->apellido);
         
         $usuario1->delete();
         
     }
     
+    /**
+     * 
+     */
     public function testDelete(){
-        $usuario = $this->crearUsuario();
-        
+        $usuario = $this->crearUsuario();        
         $this->assertTrue($usuario->save(false));
         $usuario->delete();
         $usuario = Usuario::model()->findByPk($usuario->id);
@@ -41,6 +46,11 @@ class UsuarioTest extends CDbTestCase {
         
     }
     
+    /**
+     * Esta funcion permite crear un usuario de Ejemplo
+     * para poder usar en otras funciones de prueba
+     * @return \Usuario
+     */
     public function crearUsuario(){
         $usuario = new Usuario;
         $usuario->setAttributes(array(
@@ -57,13 +67,7 @@ class UsuarioTest extends CDbTestCase {
         return $usuario;
     }
     
-    public function tetModificarContraseña(){
-        //TODO
-    }
-    
-    public function testRecuperarContraseña(){
-        //TODO
-    }
+   
     
     
 
