@@ -87,13 +87,13 @@ class SiteController extends Controller {
           } */
         $auth = new SimpleSAML_Auth_Simple('sp1');
         if (!$auth->isAuthenticated()) {
-            $auth->requireAuth(array('ReturnTo' => 'http://sp1.anfho.com/index.php/',
+            $auth->requireAuth(array('ReturnTo' => 'http://sp1.anfho.com/index.php/site/registro',
                 'KeepPost' => FALSE,));
         } else {
-            /*$atributos = $auth->getAttributes();
-            var_dump($atributos);
-            $identity = new UserIdentity($atributos['uid'][0], $atributos['uid'][0]);
-            Yii::app()->user->login($identity, 0);*/
+            /* $atributos = $auth->getAttributes();
+              var_dump($atributos);
+              $identity = new UserIdentity($atributos['uid'][0], $atributos['uid'][0]);
+              Yii::app()->user->login($identity, 0); */
             $this->render('index');
         }
         // display the login form
@@ -104,8 +104,10 @@ class SiteController extends Controller {
         $auth = new SimpleSAML_Auth_Simple('sp1');
         $atributos = $auth->getAttributes();
         var_dump($atributos);
-        $identity = new UserIdentity($atributos['username'][0], $atributos['username'][0]);
-        Yii::app()->user->login($identity, 0);
+        
+            $identity = new UserIdentity($atributos['username'][0], $atributos['username'][0]);
+            Yii::app()->user->login($identity, 0);
+        
         $this->render('index');
     }
 
