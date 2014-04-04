@@ -3,6 +3,12 @@
 /* @var $model Usuario */
 /* @var $form CActiveForm */
 ?>
+<?php if (Yii::app()->user->hasFlash('Error')): ?>
+
+    <div class="flash-error">
+        <?php echo Yii::app()->user->getFlash('Error'); ?>
+    </div>
+<?php endif; ?>
 
 <div class="form">
 

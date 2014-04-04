@@ -74,13 +74,18 @@ class UsuarioController extends Controller {
      */
     public function actionCreate() {
         $model = new Usuario;
- 
         // $this->performAjaxValidation($model);
-
         if (isset($_POST['Usuario'])) {
             $model->attributes = $_POST['Usuario'];
-            if ($model->save())
-                $this->redirect(array('view', 'id' => $model->id));
+            try {
+                if ($model->save()) {
+                    $this->redirect(array('view', 'id' => $model->id));
+                }
+            } catch (Exception $e) {
+            Yii::app()->user->setFlash('Error', "Los datos ingresados coinciden con un registro en la base de datos");
+            $this->refresh();
+               // echo "error  de base de datos";
+            }
         }
 
         $this->render('create', array(
@@ -150,7 +155,7 @@ class UsuarioController extends Controller {
     }
 
     public function actionCambiarContrasena(
-            ) {
+    ) {
         $correo = "";
         if (isset($_POST['Usuario'])) {
             $correo = $_POST['Usuario']['correo'];
@@ -167,23 +172,22 @@ class UsuarioController extends Controller {
                     $modelo->password = $_POST['Usuario']['password'];
                     if ($modelo->save()) {
                         Yii::app()->user->setFlash('contrasena', "Tu contraseña fue modificada");
-                        
                     } else {
                         Yii::app()->user->setFlash('contrasena', "Tu contraseña NO fue modificada");
                     }
-                }else{
-                 Yii::app()->user->setFlash('contrasena', "Los campos deben coincidir");   
+                } else {
+                    Yii::app()->user->setFlash('contrasena', "Los campos deben coincidir");
                 }
             } else {
                 Yii::app()->user->setFlash('contrasena', "Tu contraseña NO fue modificada");
             }
-           
+
             $this->render('cambiar', array(
                 'model' => $modelo,
             ));
         } else {
             $this->actionIndex();
-        }    
+        }
     }
 
     /**

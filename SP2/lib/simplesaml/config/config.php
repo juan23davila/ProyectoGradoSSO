@@ -44,10 +44,10 @@ $config = array (
 	 * Note: The messages are logged with the DEBUG log level, so you also need to set
 	 * the 'logging.level' option to LOG_DEBUG.
 	 */
-	'debug' => TRUE,
+	'debug' => FALSE,
 
 
-	'showerrors'            =>	TRUE,
+	'showerrors'            =>	FALSE,
 
 	/**
 	 * Custom error show function called from SimpleSAML_Error_Error::show.
@@ -352,7 +352,7 @@ $config = array (
 	/*
 	 * Which theme directory should be used?
 	 */
-	'theme.use' 		=> 'default',
+	'theme.use' 		=> 'mymodule:fancytheme',
 
 	
 	/*
