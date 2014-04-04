@@ -1,5 +1,8 @@
 <?php
-
+/**
+ * Este controlador es el encargado de manejar las acciones referentes al Sitio Web, 
+ * que no tengan que ver con los flujos de inicio o cerrado de sesion.
+ */
 class SitioController extends Controller {
 
     
@@ -57,7 +60,7 @@ class SitioController extends Controller {
     }
 
     /**
-     * Muestra la pagina de contacto.
+     * Muestra la pagina de contacto, donde el usuario puede enviar un mensaje de contacto.
      */
     public function actionContact() {
         $model = new ContactForm;

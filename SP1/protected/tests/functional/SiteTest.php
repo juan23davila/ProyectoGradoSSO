@@ -2,7 +2,10 @@
 
 class SiteTest extends WebTestCase
 {
-	
+	/**
+         * Prubea encargada de verificar el funcionamiento del
+         * Caso de prueba funcional Login - Logout.
+         */
 	public function testLoginLogout()
 	{
 		$this->open('/index.php/');
@@ -26,7 +29,10 @@ class SiteTest extends WebTestCase
 		$this->clickAndWait('link=Logout (anfho)');
 		$this->assertTextPresent('Login');
 	}
-        
+        /**
+         * Este metodo es el encargado de verificar el funcionamiento del 
+         * Caso de Prueba de recuperar Contraseña.
+         */
         public function testRecuperarContrasena(){
             $this->open('/index.php/');
             

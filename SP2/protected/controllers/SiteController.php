@@ -1,5 +1,8 @@
 <?php
-
+/**
+ * SiteController es la clase encargada de manejar las acciones referentes a las sesiones del usuario.
+ * como Login, LogOut en el SSO.
+ */
 class SiteController extends Controller {
 
     
@@ -65,7 +68,7 @@ class SiteController extends Controller {
     }
 
     /**
-     * Logs out the current user and redirect to homepage.
+     * Cierra la sesion del usuario actual y lo redirije a la pagina Inicial.
      */
     public function actionLogout() {
         //$auth = new SimpleSAML_Auth_Simple('sp1');
